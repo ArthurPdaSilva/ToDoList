@@ -1,13 +1,21 @@
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { FiPlus } from 'react-icons/fi';
 import TodoType from '../types/TodoType';
 import TodoList from './TodoList';
 
 export default function TodoContainer() {
   const [text, setText] = useState<string>('');
-  const [id, setId] = useState<number>(0);
   const [todos, setTodos] = useState<TodoType[]>([]);
+  const [id, setId] = useState<number>(0);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const hasTodos = localStorage.getItem('list');
+    if (hasTodos) {
+      setTodos(JSON.parse(hasTodos));
+      setId(JSON.parse(hasTodos)[0].id + 1);
+    }
+  }, [setTodos, setId]);
 
   const handleAdd = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
@@ -18,6 +26,7 @@ export default function TodoContainer() {
 
       if (inputRef.current) inputRef.current.focus();
 
+      localStorage.setItem('list', JSON.stringify(list));
       setTodos(list);
       setText('');
       setId(id + 1);
@@ -28,6 +37,7 @@ export default function TodoContainer() {
   const handleRemove = useCallback(
     (id: number) => {
       const list = todos.filter((item) => item.id !== id);
+      localStorage.setItem('list', JSON.stringify(list));
       setTodos(list);
     },
     [todos, setTodos],
