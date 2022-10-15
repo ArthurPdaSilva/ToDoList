@@ -1,0 +1,116 @@
+* {
+  padding: 0;
+  margin: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+body, li, .container, form, ul { display: flex; }
+
+body, li, .container, form { align-items: center;}
+
+li, ul, form input, .container { padding: 10px; }
+
+ul, .container { flex-direction: column; }
+
+body {
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  background-color: #5D0CFF;
+  min-height: 100vh;
+  font-size: 16px;
+}
+
+input, button { border: none; }
+
+button, svg { cursor: pointer; }
+
+li {
+  justify-content: space-between;
+  list-style: none;
+  width: 25vw;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 118, 20, 1) 0%,
+    rgba(255, 84, 17, 1) 100%
+  );
+  border-radius: 5px;
+}
+
+li:nth-child(4n + 1) {
+  background: linear-gradient(
+    90deg,
+    rgba(93, 12, 255, 1) 0%,
+    rgba(155, 0, 250, 1) 100%
+  );
+}
+
+li:nth-child(4n + 2) {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 12, 241, 1) 0%,
+    rgba(250, 0, 135, 1) 100%
+  );
+}
+
+li:nth-child(4n + 3) {
+  background: linear-gradient(
+    90deg,
+    rgba(20, 159, 255, 1) 0%,
+    rgba(17, 122, 255, 1) 100%
+  );
+}
+
+ul {
+  overflow-y: auto;
+  overflow-x: hidden;
+  gap: 5px;
+}
+
+span {
+  display: block;
+  word-break: break-all;
+  width: 70%;
+
+}
+
+::-webkit-scrollbar { width: 5px; }
+
+::-webkit-scrollbar-thumb { background: #5D0CFF; }
+
+::-webkit-scrollbar-thumb:hover { background: #4b0cc9; }
+
+h1 { font-size: 1.5rem; text-align: center; }
+
+form button {
+  background-color: transparent;
+  background-color: #5D0CFF;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+form input {
+  font-size: 1rem;
+  border: 3px solid #5D0CFF;
+  background-color: #0D0D13;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+form input::placeholder, form input { color: #F4F9E9; }
+
+.container {
+  justify-content: start;
+  background-color: #0D0D13;
+  color: #F4F9E9;
+  border-radius: 10px;
+  gap: 10px;
+  height: 70vh;
+  min-width: 30vw;
+}
+
+@media(max-width: 600px) {
+  .container { border-radius: 0;}
+
+  li { width: 80vw; }
+}
